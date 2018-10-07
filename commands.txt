@@ -1,0 +1,33 @@
+# Retrieve all users
+User.objects.all()
+
+# Get the last user
+User.objects.last()
+
+# Create a few records in the users
+User.objects.create(first_name="Jeremy", last_name="Wilson", email="jeremybwilson@gmail.com", age=43)
+User.objects.create(first_name="Alex", last_name="Wilson", email="alexgwilson@gmail.com", age=17)
+User.objects.create(first_name="Anika", last_name="Wilson", email="anika@gmail.com", age=14)
+
+# Get the first user
+User.objects.first()
+
+# Get the users sorted by their first name (order by first_name DESC)
+User.objects.order_by("-first_name")
+# Get the users sorted by their first name (order by first_name ASC)
+User.objects.order_by("first_name")
+
+
+# Get the record of the user whose id is 3 and UPDATE the person's last_name to something else.
+# Know how to do this directly in the console using .get and .save.
+user = User.objects.get(id=3)
+user.last_name = "Dobalina"
+user.save()
+print user
+user = User.objects.get(id=3)
+user.last_name = "Wilson"
+user.save()
+print user
+
+# Know how to delete a record of a user whose id is 4 (use something like User.objects.get(id=2).delete...)
+User.objects.get(last_name="Wilson").delete()
